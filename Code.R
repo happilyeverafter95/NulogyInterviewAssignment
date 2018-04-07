@@ -10,15 +10,7 @@ links <- aggregate(links[,3], links[,-3], sum)
 links <- links[order(links$from, links$to),]
 rownames(links) <- NULL
 
-
-for (i in 1:nrow(nodes)){
-  if (nodes[i,'label'] == 'shipper'){
-    nodes[i, 'label.type'] = 1
-  }
-  else {
-    nodes[i, 'label.type'] = 2
-  }
-}
+nodes$label.type <- ifelse(nodes$label == 'shipper', 1, 2)
 
 net <- graph_from_data_frame(d=links, vertices=nodes, directed=T)
 
