@@ -1,4 +1,4 @@
-install.packages("igraph") 
+#install.packages("igraph") 
 library(igraph)
 
 nodes <- read.csv("...nodesAndLabel.csv", header = T, as.is = T)
